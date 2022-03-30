@@ -57,7 +57,7 @@ export const getBoardDetail = (id: number): Response => {
   };
 };
 
-export const addBoard = (params: Board): Response => {
+export const createBoard = (params: Board): Response => {
   const getAddBoardId = () => Math.max(...list.map((o) => o.id)) + 1;
   const list: Board[] = getSimpleBoardList();
   params.id = getAddBoardId();

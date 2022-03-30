@@ -71,7 +71,7 @@ export default defineComponent({
       }
     }
 
-    const goList = () => router.push('/');
+    const goList = () => router.push("/");
 
     getItem();
 
