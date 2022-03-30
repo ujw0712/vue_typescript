@@ -1,4 +1,4 @@
-import { Board, Response } from "@/types";
+import { Board } from "@/types";
 
 const getSimpleBoardList = () =>
   JSON.parse(localStorage.getItem("simpleBoardList") || "").list;
@@ -6,7 +6,7 @@ const getSimpleBoardList = () =>
 const setSimpleBoardList = (list: Board[]) =>
   localStorage.setItem("simpleBoardList", JSON.stringify({ list: list }));
 
-export const getBoardList = (): Response => {
+export const getBoardList = () => {
   if (!localStorage.getItem("simpleBoardList")) {
     setSimpleBoardList([
       {
@@ -48,16 +48,16 @@ export const getBoardList = (): Response => {
   };
 };
 
-export const getBoardDetail = (id: number): Response => {
+export const getBoardDetail = (id: number) => {
   const list: Board[] = getSimpleBoardList();
 
   return {
     result: true,
-    data: list.find((l) => l.id === id) || [],
+    data: list.find((l) => l.id === id) || null,
   };
 };
 
-export const createBoard = (params: Board): Response => {
+export const createBoard = (params: Board) => {
   const getAddBoardId = () => Math.max(...list.map((o) => o.id)) + 1;
   const list: Board[] = getSimpleBoardList();
   params.id = getAddBoardId();
@@ -66,35 +66,34 @@ export const createBoard = (params: Board): Response => {
 
   return {
     result: true,
-    data: {},
+    data: null,
   };
 };
 
-export const updateBoard = (params: Board): Response => {
+export const updateBoard = (params: Board) => {
   const newList = [];
   const list: Board[] = getSimpleBoardList();
   for (const item of list) {
     if (item.id === params.id) {
-      newList.push(params)
+      newList.push(params);
     } else {
-      newList.push(item)
+      newList.push(item);
     }
   }
   setSimpleBoardList(newList);
 
   return {
     result: true,
-    data: {},
+    data: null,
   };
 };
 
-
-export const deleteBoard = (id: number): Response => {
+export const deleteBoard = (id: number) => {
   const list: Board[] = getSimpleBoardList();
   setSimpleBoardList(list.filter((l) => l.id != id));
 
   return {
     result: true,
-    data: {},
+    data: null,
   };
 };

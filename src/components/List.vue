@@ -19,25 +19,23 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { getBoardList } from "@/api";
-import { Board, Response } from "@/types";
+import { Ref, Board } from "@/types";
 export default defineComponent({
   setup() {
-    const list = ref<any>([] as Board[]);
+    const list = ref<Ref<Board[]>>();
+
     const getList = () => {
-      const res: Response = getBoardList()
+      const res = getBoardList();
       if (res.result) {
-        list.value = res.data
+        list.value = res.data;
       }
-    }
-
-
+    };
 
     getList();
 
     return {
       list,
-
-    }
+    };
   },
 });
 </script>

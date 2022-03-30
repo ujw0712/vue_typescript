@@ -295,3 +295,19 @@ interface Hero {
 ```
 
 ---
+## shims-vue.d.ts
+- IDE(Integrated Development Environment, 통합개발환경)가 .vue 파일이 어떤 파일인지 이해하는 것을 도움.
+- 수 많은 파일 중 .vue 파일이 어떤 파일인지 IDE가 판단하기 쉽게 해줌.
+- https://stackoverflow.com/questions/54622621/what-does-the-shims-tsx-d-ts-file-do-in-a-vue-typescript-project
+- https://fettblog.eu/typescript-modules-for-webpack/
+```typescript
+// *.vue 파일을 import할 때 .vue파일이 있는 것처럼 처리. (TypeScript는 .vue 파일을 이해하지 못함)
+// ~~이름이 있는 모듈을 가져올 때마다 실제로 수행하지 말고(TypeScript에선 이해할 수 없으니 모듈을 못 가져옴)
+// ~~이러한 내용이 있는 것처럼 처리.
+declare module "*.vue" {
+  import Vue from 'vue';
+  export default Vue;
+}
+```
+
+---

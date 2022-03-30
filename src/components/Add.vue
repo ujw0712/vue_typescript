@@ -33,7 +33,7 @@
 import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
 import { createBoard } from "@/api";
-import { Board, Response } from "@/types";
+import { Board } from "@/types";
 
 export default defineComponent({
   setup() {
@@ -58,7 +58,7 @@ export default defineComponent({
         contents: contents.value,
       };
 
-      const res: Response = createBoard(params);
+      const res = createBoard(params);
       if (res.result) {
         alert("등록되었습니다.");
         goList();
