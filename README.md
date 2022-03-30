@@ -74,6 +74,7 @@ export default {
 
 ---
 ## Vue3 + TypeScript 프로젝트 세팅.
+- https://vuejs.org/guide/typescript/overview.html
 ```javascript
 // vue cli 설치하기.
 npm install -g @vue/cli
